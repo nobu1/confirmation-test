@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/logout.css') }}" />
 </head>
 
 <body>
@@ -16,19 +16,18 @@
             <h1 class="header__h1">
                 FashionablyLate
             </h1>
-            <a href="/register"><button class="form__button-submit" type="submit">register</button></a>
         </div>
     </header>
 
     <main>
-        <div class="contact-form__content">
-            <div class="contact-form__heading">
+        <div class="logout-form__content">
+            <div class="logout-form__heading">
                 <h2>Logout</h2>
             </div>
 
             <form action="{{ route('logout') }}" method="post">
                 @csrf 
-                <button type="submit">ログアウト</button>
+                <button class="form__button-logout" type="submit">ログアウト</button>
             </form>
         </div>
     </main>

@@ -1,0 +1,32 @@
+.header {
+  background: white;
+  border: 1px solid #E0DFDE;
+  max-width: 1512px;
+  height: 100px;
+  
+} 
+
+.header__h1 {
+  color: #8B7969;
+  text-align: center;
+}
+
+.logout-form__content {
+  text-align: center;
+}
+
+.logout-form__heading {  
+  color: #8B7969;
+}
+
+.form__button-logout {
+  margin-top: 26px;
+  padding: 10px;
+  width: 100px;
+  height: 34px;
+  border: none;
+  background: #D9C6B5;
+  color: #fff;
+  cursor: pointer;
+}
+

@@ -9,38 +9,18 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
     <script src="{{ asset('js/admin.js') }}" defer></script>
-    {{-- <style>
-        th {
-          background-color: #289ADC;
-          color: white;
-          padding: 5px 40px;
-        }
-      
-        tr:nth-child(odd) td {
-          background-color: #FFFFFF;
-        }
-      
-        td {
-          padding: 25px 40px;
-          background-color: #EEEEEE;
-          text-align: center;
-        }
-      
-        svg.w-5.h-5 {
-          /*paginateメソッドの矢印の大きさ調整のために追加*/
-          width: 30px;
-          height: 30px;
-        }
-      </style> --}}
 </head>
 
 <body>
 
     <header class="header">
-        <div class="header__inner">
+        <div class="header__left">
             <h1 class="header__h1">
                 FashionablyLate
             </h1>
+        </div>
+        <div class="header__right">
+            <a href="/logout"><button class="form__button-logout" type="submit" name="logout">logout</button></a>
         </div>
     </header>
 
