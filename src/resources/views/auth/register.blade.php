@@ -12,17 +12,19 @@
 
 <body>
     <header class="header">
-        <div class="header__inner">
+        <div class="header__left">
             <h1 class="header__h1">
                 FashionablyLate
             </h1>
-            <a href="/login"><button class="form__button-submit" type="submit">login</button></a>
+        </div>
+        <div class="header__right">
+            <a href="/login"><button class="form__button-login" type="submit">login</button></a>
         </div>
     </header>
 
     <main>
-        <div class="contact-form__content">
-            <div class="contact-form__heading">
+        <div class="register-form__content">
+            <div class="register-form__heading">
                 <h2>Register</h2>
             </div>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 
 class AdminController extends Controller
 {

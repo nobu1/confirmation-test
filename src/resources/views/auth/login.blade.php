@@ -7,22 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
 </head>
 
 <body>
     <header class="header">
-        <div class="header__inner">
+        <div class="header__left">
             <h1 class="header__h1">
                 FashionablyLate
             </h1>
-            <a href="/register"><button class="form__button-submit" type="submit">register</button></a>
+        </div>
+        <div class="header__right">
+            <a href="/register"><button class="form__button-register" type="submit">register</button></a>
         </div>
     </header>
 
     <main>
-        <div class="contact-form__content">
-            <div class="contact-form__heading">
+        <div class="login-form__content">
+            <div class="login-form__heading">
                 <h2>Login</h2>
             </div>
 

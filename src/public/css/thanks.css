@@ -1,29 +1,35 @@
-.header {
-  background: white;
-  color: #8B7969;
-  text-align: center;
-}
-
-.header__inner {
-  margin: 0 auto;
-  padding: 20px 15px;
-  max-width: 1230px;
-}
-
-.header__logo {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 24px;
-}
-
 .thanks__content {
-  margin: 0 auto;
-  padding: 30px 15px;
-  max-width: 1230px;
+  margin-top:319px;
 }
 
 .thanks__heading {
   margin-bottom: 40px;
   text-align: center;
+  color: #8B7969;
+}
+
+.form__button {
+  text-align: center;
+}
+
+.thanks__heading-back {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 280px;
+  font-weight: 400;
+  color: #8B7969;
+  top: -140px;
+  opacity: 0.05;
+}
+
+.form__button-submit {
+  padding: 10px, 40px, 10px, 40px;
+  width: 120px;
+  height: 42px;
+  border: none;
+  background: #82756A;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
 }

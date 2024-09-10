@@ -5,33 +5,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        th {
-            background-color: #8B7969;
-            color: white;
-            padding: 5px 40px;
-        }
-
-        tr:nth-child(odd) td {
-            background-color: #FFFFFF;
-        }
-
-        td {
-            padding: 25px 40px;
-            background-color: #EEEEEE;
-            text-align: center;
-        }
-
-        svg.w-5.h-5 {
-            /*paginateメソッドの矢印の大きさ調整のために追加*/
-            width: 30px;
-            height: 30px;
-        }
-    </style>
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
     <script src="{{ asset('js/admin.js') }}" defer></script>
+    {{-- <style>
+        th {
+          background-color: #289ADC;
+          color: white;
+          padding: 5px 40px;
+        }
+      
+        tr:nth-child(odd) td {
+          background-color: #FFFFFF;
+        }
+      
+        td {
+          padding: 25px 40px;
+          background-color: #EEEEEE;
+          text-align: center;
+        }
+      
+        svg.w-5.h-5 {
+          /*paginateメソッドの矢印の大きさ調整のために追加*/
+          width: 30px;
+          height: 30px;
+        }
+      </style> --}}
 </head>
 
 <body>
@@ -56,16 +56,16 @@
                 <div class="form__group">
                     <div class="form__group-content">
                         <div class="form__input--search">
-                            <input type="text" name="keyword" placeholder="名前やメールアドレスを入力してください"
+                            <input class="form__input-keyword" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください"
                                 value="{{ old('keyword') }}" />
-                            <select name="gender">
+                            <select class="form__select-gender" name="gender">
                                 <option value="">性別</option>
                                 <option value="">全て</option>
                                 <option value="1">男性</option>
                                 <option value="2">女性</option>
                                 <option value="3">その他</option>
                             </select>
-                            <select name="categories">
+                            <select class="form__option-categories" name="categories">
                                 <option value="">お問い合わせの種類</option>
                                 <option value="delivery">商品のお届けについて</option>
                                 <option value="replace">商品の交換について</option>
@@ -73,21 +73,18 @@
                                 <option value="contact">ショップへのお問い合わせ</option>
                                 <option value="others">その他</option>
                             </select>
-                            <input type="date" name="date" value="" />
-                            <button class="form__button-submit" type="submit" name="search">検索</button>
-                            <button class="form__button-submit" type="submit" name="reset">リセット</button>
-                        </div>
-                        <div class="form__error">
-                            @error('last_name')
-                                {{ $message }}
-                            @enderror
+                            <input class="form__input-date" type="date" name="date" value="" />
+                            <button class="form__button-search" type="submit" name="search">検索</button>
+                            <button class="form__button-reset" type="submit" name="reset">リセット</button>
                         </div>
                     </div>
                 </div>
                 <div class="form__group">
-                    <div class="form__group-content">
-                        <div class="form__button--functions">
-                            <button class="form__button-submit" type="submit" name="export">エクスポート</button>
+                    <div class="form__button-content">
+                        <div class="form__button--left">
+                            <button class="form__button-export" type="submit" name="export">エクスポート</button>
+                        </div>
+                        <div class="form__button--right flex justify-center">
                             {{ $contacts->links() }}
                         </div>
                     </div>
