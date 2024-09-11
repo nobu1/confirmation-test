@@ -25,7 +25,7 @@
 - Laravel 8.83
 
 ## ER図
-
+<img src="src/public/img/ER_Diagram.jpg">
 
 ## URL
 
