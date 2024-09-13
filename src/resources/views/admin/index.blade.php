@@ -122,7 +122,7 @@
                                             data-url="{{ route('admin.destory', $contact->id) }}">詳細</button> --}}
                                     </td>
                                     <!-- Modal 削除機能が実装できなかった-->
-                                    <dialog id="js_dialog_{{ $contact->id }}" class="dialog">
+                                    {{-- <dialog id="js_dialog_{{ $contact->id }}" class="dialog">
                                         <form class="form" action="{{ route('admin.destory', $contact->id) }}"
                                             method="POST">
                                             @csrf
@@ -235,7 +235,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </dialog>
+                                    </dialog> --}}
                                 </tr>
                             @endforeach
                     </table>
