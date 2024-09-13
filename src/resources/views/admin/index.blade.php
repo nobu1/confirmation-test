@@ -8,7 +8,6 @@
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
-    <script src="{{ asset('js/admin.js') }}" defer></script>
 </head>
 
 <body>
@@ -30,14 +29,14 @@
                 <h2>Admin</h2>
             </div>
 
-            
+
             <form class="form" action="" method="POST">
                 @csrf
                 <div class="form__group">
-                    <div class="form__group-content">
+                    <div class="form__group-search">
                         <div class="form__input--search">
-                            <input class="form__input-keyword" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください"
-                                value="{{ old('keyword') }}" />
+                            <input class="form__input-keyword" type="text" name="keyword"
+                                placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword') }}" />
                             <select class="form__select-gender" name="gender">
                                 <option value="">性別</option>
                                 <option value="">全て</option>
@@ -64,7 +63,7 @@
                         <div class="form__button--left">
                             <button class="form__button-export" type="submit" name="export">エクスポート</button>
                         </div>
-                        <div class="form__button--right flex justify-center">
+                        <div class="form__button--right">
                             {{ $contacts->links() }}
                         </div>
                     </div>
@@ -87,11 +86,11 @@
                                     <td class="admin-table__content">
                                         {{ $contact->last_name }}　{{ $contact->first_name }}</td>
                                     <td class="admin-table__content">
-                                        @if ($contact['gender'] == 1)
+                                        @if ($contact->gender == 1)
                                             男性
-                                        @elseif ($contact['gender'] == 2)
+                                        @elseif ($contact->gender == 2)
                                             女性
-                                        @elseif ($contact['gender'] == 3)
+                                        @elseif ($contact->gender == 3)
                                             その他
                                         @else
                                             <p>　</p>
@@ -114,35 +113,137 @@
                                         @endif
                                     </td>
                                     <td class="admin-table__button">
-                                        <a href="{{ route('admin.show', $contact->id) }}"><button type="button">詳細</button></a>
+                                        <a href="{{ route('admin.show', $contact->id) }}"><button
+                                                type="button">詳細</button></a>
+                                        
+                                        {{--Modalの削除機能が実装できなかった 
+                                            <button type="button" class="js_dialog_open"
+                                            data-dialog="#js_dialog_{{ $contact->id }}"
+                                            data-url="{{ route('admin.destory', $contact->id) }}">詳細</button> --}}
                                     </td>
+                                    <!-- Modal 削除機能が実装できなかった-->
+                                    <dialog id="js_dialog_{{ $contact->id }}" class="dialog">
+                                        <form class="form" action="{{ route('admin.destory', $contact->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <span class="js_dialog_close">×</span>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">お名前</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                <p>{{ $contact->last_name }}　{{ $contact->first_name }}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">性別</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                @if ($contact->gender == 1)
+                                                                    <p>男性</p>
+                                                                @elseif ($contact->gender == 2)
+                                                                    <p>女性</p>
+                                                                @elseif ($contact->gender == 3)
+                                                                    <p>その他</p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">メールアドレス</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                <p>{{ $contact->email }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">電話番号</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                <p>{{ $contact->tell }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">住所</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                <p>{{ $contact->address }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">建物名</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                <p>{{ $contact->building }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">お問い合わせの種類</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                @if ($contact->category->content == 'delivery')
+                                                                    <p>商品のお届けについて</p>
+                                                                @elseif ($contact->category->content == 'replace')
+                                                                    <p>商品の交換について</p>
+                                                                @elseif ($contact->category->content == 'trouble')
+                                                                    <p>商品トラブル</p>
+                                                                @elseif ($contact->category->content == 'contact')
+                                                                    <p>ショップへのお問い合わせ</p>
+                                                                @elseif ($contact->category->content == 'others')
+                                                                    <p>その他</p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__group">
+                                                        <div class="form__group-title">
+                                                            <span class="form__label--item">お問い合わせの内容</span>
+                                                        </div>
+                                                        <div class="form__group-content">
+                                                            <div class="form__input--text">
+                                                                <p>{{ $contact->detail }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form__button">
+                                                    <button class="form__button-delete" type="submit">削除</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </dialog>
                                 </tr>
                             @endforeach
                     </table>
+                    <script src="{{ asset('js/admin.js') }}"></script>
                 </div>
             </form>
 
-            <!-- Modal -->
-            {{-- <div class="modal fade" id="modal<?= $contact->id ?>" tabindex="-1" role="dialog" aria-labelledby="label1"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="label1">ID : {{ $contact->id }} が表示されてます</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            {{ $contact->first_name }}
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </main>
 </body>
