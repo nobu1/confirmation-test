@@ -54,6 +54,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  width: 1200px;
+}
+
+.form__group-search {
+  display: flex;
+  justify-content: left;
 }
 
 .form__input-keyword {
@@ -122,12 +128,12 @@
 }
 
 .form__button--left {
-  width: 100px;
+  width: 30%;
   text-align: left;
 }
 
 .form__button--right {
-  width: 1000px;
+  width: 70%;
 }
 
 .form__button-export {
@@ -143,12 +149,15 @@
 
 .pagination {
   display: flex;
-  justify-content: left;
-  margin-top: -3px;
+  justify-content: right;
+  width: max-content;
+  margin-top: 0px;
   margin-left: 20px;
+  height: 39px;
   .page-item {
     border: 1px solid #eeeeee;
     padding: 10px;
+    font-size: small;
   }
   .disabled {
     color: #222222;
@@ -162,11 +171,12 @@
 }
 
 .admin-table {
-  width: 1183px;
+  width: 1200px;
 }
 .admin-table__inner {
   border-collapse: collapse;
   border: 1px solid #E0DFDE;
+  width: 790px;
 }
 
 .admin-table__header {
@@ -183,4 +193,102 @@
 .admin-table__button {
   padding: 20px;
   border-bottom: 1px solid #E0DFDE;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 20% auto;
+  width: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+@keyframes modalopen {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.modal-header h1 {
+  margin: 1rem 0;
+}
+
+.modal-header {
+  padding: 10px;
+  display: flex;
+  justify-content: right;
+}
+
+.js_dialog_close {
+  padding: 10px;
+  border: 1px solid #8B7969;
+  width: 40px;
+  height: 42px;
+  border-radius: 50%;
+  color: #8B7969;
+  font-weight: bold;
+}
+
+.js_dialog_close:hover {
+  background-color: #D9C6B5;
+  opacity: 0.5;
+}
+
+.modalClose {
+  font-size: 2rem;
+}
+
+.modalClose:hover {
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 10px 20px;
+  color: #8B7969;
+}
+
+.dialog {
+  border: 1px solid #8B7969;
+}
+
+.form__group {
+  display: flex;
+  width: auto;
+}
+
+.form__group-title {
+  padding: 10px;
+  width: 30%;
+  text-align: left;
+}
+
+.form__group-content {
+  padding: 10px;
+  width: 70%;
+  text-align: left;
+}
+
+.form__input--text {
+  margin-top: -15px;
+}
+
+.form__button-delete {
+  background-color: #BA370D;
+  color: white;
+  width: 76px;
+  height: 39px;
+  margin-bottom: 30px;
+  border: none;
 }
